@@ -9,6 +9,7 @@ print("Génération du mot à trouver ....")
 
 ListePotentielMot = [ "noyais" , "climat" , "croqua" , "limage" , "labeur" , "clouas", "fumeux", "profus" , "proche" , "wagons" ]
 motAtrouver = random.choice(ListePotentielMot)
+
 print (motAtrouver)
 
 Essais = 8
@@ -26,7 +27,7 @@ def compteLettre():
             compteur = compteur + 1
     print("Il y a ", compteur, "lettre dans ce mot")
     
-compteLettre()
+#compteLettre()
 
 while Essais >0 :
     essaiMot = input("Entrez votre proposition de 6 lettres en minuscule : ")
@@ -38,11 +39,12 @@ while Essais >0 :
             pasDdans = False
             for j in range (0,6):
                 if motAtrouver[i] == essaiMot[j]:
-                    print ( Back.YELLOW + essaiMot[j])
+                    print ( Back.YELLOW + Fore.BLACK + essaiMot[i])
+                    
                     print(Style.RESET_ALL)
                     pasDdans = True
             if pasDdans == False :
-                print ( Back.BLUE + essaiMot[j] )   
+                print ( Back.BLUE + essaiMot[i] )   
                 print(Style.RESET_ALL)
              
     if motAtrouver == essaiMot :
