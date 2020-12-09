@@ -1,47 +1,43 @@
+import random
 from colorama import init
 init()
 from colorama import Fore, Back, Style
-from random import *
-#print(Fore.RED + 'some red text', end=" ")
-#print(Back.GREEN + 'and with a green background')
 
-# LISTE DES MOTS N'AYANT PAS LA MÊME LETTRE DANS LE MOT
-# noyais climat croqua limage labeur clouas fumeux profus proche wagons
-mot1="noyais"
-mot2="climat"
-mot3="croqua"
-mot4="limage"
-mot5="labeur"
-mot6="clouas"
-mot7="fumeux"
-mot8="profus"
-mot9="proche"
-mot10="wagons"
-motAtrouver = "mot"
+listeMot = [ "noyais" , "climat" , "croqua" , "limage" , "labeur" , "clouas", "fumeux", "profus" , "proche" , "wagons" ]
+motAtrouver = random.choice(listeMot)
+print (motAtrouver)
+Essais = 8
 
-def motAleatoire():
-    de = randint(1,10)
-    if (de == 1):
-        motAtrouver = mot1
-    if (de == 2):
-        motAtrouver = mot2
-    if (de == 3):
-        motAtrouver = mot3
-    if (de == 4):
-        motAtrouver = mot4
-    if (de == 5):
-        motAtrouver = mot5
-    if (de == 6):
-        motAtrouver = mot6
-    if (de == 7):
-        motAtrouver = mot7
-    if (de == 8):
-        motAtrouver = mot8
-    if (de == 9):
-        motAtrouver = mot9
-    if (de == 10):
-        motAtrouver = mot10
-    print(motAtrouver)
-    return(motAtrouver)
 
-motAleatoire()
+print("Bienvenue dans ce jeu du motus")
+print("Vous avez 8 essais pour trouver le mot avant de perdre")
+print("Génération du mot à trouver ....")
+
+print("Les règles sont simples si la lettre est rouge c'est qu'elle est à la bonne place dans le mot, si elle est jaune c'est qu'elle est dans le mot mais pas")
+print("à la bonne place et si la lettre est bleue c'est qu'elle n'est pas dans le mot")
+essaiMot = input("Entrez votre proposition de 6 lettres en minuscule : ")
+print(essaiMot)
+
+
+while Essais >0:
+    
+    for i in range (0,6):
+        if motAtrouver[i] == essaiMot[i]:
+            print ( Back.RED + essaiMot[i] )
+        else:
+            pasDdans = False
+            for j in range (0,6):
+                if motAtrouver[i] == essaiMot[j]:
+                    print ( Back.YELLOW + essaiMot[j])
+                    pasDdans = True
+            if pasDdans == False :
+                print ( Back.BLUE + essaiMot[j] )                
+    if motAtrouver == essaiMot :
+        print ("Vous avez gagné au bout de :", Essais, "essais")
+        exit()
+    Essais = Essais -1
+print ("Vous avez perdu")
+
+
+
+
