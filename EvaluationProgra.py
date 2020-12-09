@@ -7,8 +7,8 @@ print("Bienvenue dans ce jeu du motus")
 print("Vous avez 8 essais pour trouver le mot avant de perdre")
 print("Génération du mot à trouver ....")
 
-listeMot = [ "noyais" , "climat" , "croqua" , "limage" , "labeur" , "clouas", "fumeux", "profus" , "proche" , "wagons" ]
-motAtrouver = random.choice(listeMot)
+ListePotentielMot = [ "noyais" , "climat" , "croqua" , "limage" , "labeur" , "clouas", "fumeux", "profus" , "proche" , "wagons" ]
+motAtrouver = random.choice(ListePotentielMot)
 print (motAtrouver)
 
 Essais = 8
@@ -17,7 +17,16 @@ Essais = 8
 print("Les règles sont simples si la lettre est rouge c'est qu'elle est à la bonne place dans le mot, si elle est jaune c'est qu'elle est dans le mot mais pas")
 print("à la bonne place et si la lettre est bleue c'est qu'elle n'est pas dans le mot")
 
-
+def compteLettre():
+    MotAcompter = input("Entrez votre mot de 6 lettres: ")
+    lettre = input("Quelle lettre souhaitez vous compter ? : ")
+    compteur = 0
+    for i in range (0,6):
+        if MotAcompter[i] == lettre:
+            compteur = compteur + 1
+    print("Il y a ", compteur, "lettre dans ce mot")
+    
+compteLettre()
 
 while Essais >0 :
     essaiMot = input("Entrez votre proposition de 6 lettres en minuscule : ")
@@ -31,7 +40,6 @@ while Essais >0 :
                 if motAtrouver[i] == essaiMot[j]:
                     print ( Back.YELLOW + essaiMot[j])
                     print(Style.RESET_ALL)
-
                     pasDdans = True
             if pasDdans == False :
                 print ( Back.BLUE + essaiMot[j] )   
